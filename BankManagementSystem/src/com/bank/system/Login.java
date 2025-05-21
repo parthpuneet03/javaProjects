@@ -31,6 +31,7 @@ public class Login extends JFrame implements ActionListener{
         add(cardNo);
         
         cardNum= new JTextField();
+        cardNum.setFont(new Font("Arial", Font.BOLD, 15));
         cardNum.setBounds(320, 120, 250, 30);
         add(cardNum);
         
@@ -40,6 +41,7 @@ public class Login extends JFrame implements ActionListener{
         add(pin);
         
         pinNum= new JPasswordField();
+        pinNum.setFont(new Font("Arial", Font.BOLD, 28));
         pinNum.setBounds(320, 160, 250, 30);
         add(pinNum);
         
