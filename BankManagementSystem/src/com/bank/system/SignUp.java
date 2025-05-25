@@ -3,21 +3,29 @@ package com.bank.system;
 import com.toedter.calendar.JDateChooser;
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
 import java.util.Random;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
-import com.toedter.calendar.JDayChooser;
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JRadioButton;
+import java.awt.event.ActionListener;
+import javax.swing.JOptionPane;
 
-public class SignUp extends JFrame {
+public class SignUp extends JFrame implements ActionListener{
+    long l;
+    JTextField pinField,stateField,nameField, fNameField, emailField, addressField, cityField;
+    JButton next;
+    JRadioButton male, female, other, married, unmarried;
+    JDateChooser date;
+        
     
     SignUp(){
         setLayout(null);
         Random rnd=new Random();
-        Long l=(Math.abs(rnd.nextLong()%9000L)+ 1000l);
+         l=(Math.abs(rnd.nextLong()%9000L)+ 1000l);
         
         JLabel formNo=new JLabel("Application Form Number: "+ l);
         formNo.setFont(new Font("Raleway", Font.BOLD,38));
@@ -34,7 +42,7 @@ public class SignUp extends JFrame {
         name.setBounds(190,140,100,40);
         add(name);
         
-        JTextField nameField=new JTextField();
+        nameField=new JTextField();
         nameField.setFont(new Font("Arial", Font.BOLD, 18));
         nameField.setBounds(360, 150, 300, 20);
         add(nameField);
@@ -44,7 +52,7 @@ public class SignUp extends JFrame {
         fatherName.setBounds(190,170,200,40);
         add(fatherName);
         
-        JTextField fNameField=new JTextField();
+        fNameField=new JTextField();
         fNameField.setFont(new Font("Arial", Font.BOLD, 18));
         fNameField.setBounds(360, 180, 300, 20);
         add(fNameField);
@@ -54,7 +62,7 @@ public class SignUp extends JFrame {
         DOB.setBounds(190,200,200,40);
         add(DOB);
         
-        JDateChooser date= new JDateChooser();
+        date = new JDateChooser();
         date.setBounds(360, 210, 150, 20);
         date.setForeground(Color.black);
         add(date);
@@ -64,17 +72,17 @@ public class SignUp extends JFrame {
         gender.setBounds(190,230,200,40);
         add(gender);
         
-        JRadioButton male= new JRadioButton("Male");
+        male= new JRadioButton("Male");
         male.setBounds(360, 240, 80, 20);
         male.setBackground(Color.white);
         add(male);
 
-        JRadioButton female= new JRadioButton("Female");
+         female= new JRadioButton("Female");
         female.setBounds(450, 240, 100, 20);
         female.setBackground(Color.white);
         add(female);
         
-        JRadioButton other= new JRadioButton("Other");
+         other= new JRadioButton("Other");
         other.setBounds(550, 240, 100, 20);
         other.setBackground(Color.white);
         add(other);
@@ -89,7 +97,7 @@ public class SignUp extends JFrame {
         email.setBounds(190,260,200,40);
         add(email);
         
-        JTextField emailField=new JTextField();
+        emailField=new JTextField();
         emailField.setFont(new Font("Arial", Font.BOLD, 18));
         emailField.setBounds(360, 270, 300, 20);
         add(emailField);
@@ -99,26 +107,26 @@ public class SignUp extends JFrame {
         maritalStatus.setBounds(190,290,200,40);
         add(maritalStatus);
         
-        JRadioButton marrried= new JRadioButton("Marrried");
-        marrried.setBounds(360, 300, 80, 20);
-        marrried.setBackground(Color.white);
-        add(marrried);
+         married= new JRadioButton("Marrried");
+        married.setBounds(360, 300, 80, 20);
+        married.setBackground(Color.white);
+        add(married);
 
-        JRadioButton unmarrried= new JRadioButton("Unmarrried");
-        unmarrried.setBounds(450, 300, 100, 20);
-        unmarrried.setBackground(Color.white);
-        add(unmarrried);
+        unmarried= new JRadioButton("Unmarrried");
+        unmarried.setBounds(450, 300, 100, 20);
+        unmarried.setBackground(Color.white);
+        add(unmarried);
         
         ButtonGroup marriedGrp= new ButtonGroup();
-        marriedGrp.add(marrried);
-        marriedGrp.add(unmarrried);
+        marriedGrp.add(married);
+        marriedGrp.add(unmarried);
         
         JLabel Address=new JLabel("Address: ");
         Address.setFont(new Font("Raleway", Font.BOLD,20));
         Address.setBounds(190,320,200,40);
         add(Address);
         
-        JTextField addressField=new JTextField();
+        addressField=new JTextField();
         addressField.setFont(new Font("Arial", Font.BOLD, 18));
         addressField.setBounds(360, 330, 300, 20);
         add(addressField);
@@ -128,7 +136,7 @@ public class SignUp extends JFrame {
         city.setBounds(190,350,200,40);
         add(city);
         
-        JTextField cityField=new JTextField();
+        cityField=new JTextField();
         cityField.setFont(new Font("Arial", Font.BOLD, 18));
         cityField.setBounds(360, 360, 300, 20);
         add(cityField);
@@ -138,7 +146,7 @@ public class SignUp extends JFrame {
         state.setBounds(190,380,200,40);
         add(state);
         
-        JTextField stateField=new JTextField();
+        stateField=new JTextField();
         stateField.setFont(new Font("Arial", Font.BOLD, 18));
         stateField.setBounds(360, 390, 300, 20);
         add(stateField);
@@ -148,15 +156,16 @@ public class SignUp extends JFrame {
         pinCode.setBounds(190,410,200,40);
         add(pinCode);
         
-        JTextField pinField=new JTextField();
+        pinField=new JTextField();
         pinField.setFont(new Font("Arial", Font.BOLD, 18));
         pinField.setBounds(360, 420, 300, 20);
         add(pinField);
         
-        JButton next=new JButton("Next");
+        next=new JButton("Next");
         next.setBackground(Color.BLACK);
         next.setForeground(Color.white);
         next.setBounds(450, 500, 100, 25);
+        next.addActionListener(this);
         add(next);
         
         getContentPane().setBackground(Color.white);
@@ -166,7 +175,38 @@ public class SignUp extends JFrame {
         setVisible(true);
     }
     
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        String formNo=""+ l;
+        String name=nameField.getText();
+        String fname=fNameField.getText();
+        String dob=((JTextField)date.getDateEditor().getUiComponent()).getText();
+        String gender=male.isSelected()?"Male":(female.isSelected()?"Female":"other");
+        String email= emailField.getText();
+        String maritalStatus=married.isSelected()?"Married":"Unmarried";
+        String address=addressField.getText();
+        String city= cityField.getText();
+        String state=stateField.getText();
+        String pin=pinField.getText();
+        
+        try{
+            if( name.equals("")){
+                JOptionPane.showMessageDialog(null, "Name is mandatory");
+                
+            }else{
+                Conn c= new Conn();
+                String query="insert into bankmanagementsystem  values('"+formNo+"', '"+name+"', '"+fname+"', '"+dob+"', '"+gender+"', '"+email+"', '"+maritalStatus+"', '"+address+"', '"+city+"', '"+state+"', '"+pin+"');";
+                JOptionPane.showMessageDialog(null, query);
+                c.s.executeUpdate(query);
+            }
+        }catch( Exception | Error er){
+            er.printStackTrace();
+        }
+    }
+    
     public static void main(String[] args) {
         new SignUp();
     }
+
+    
 }

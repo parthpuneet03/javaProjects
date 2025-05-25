@@ -5,12 +5,12 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class Login extends JFrame implements ActionListener{
+public class Home extends JFrame implements ActionListener{
     
     JButton login, signup, clear;
     JTextField cardNum;
     JPasswordField pinNum;
-    Login(){
+    Home(){
         setTitle("Automatic Teller Machine");
         ImageIcon i1= new ImageIcon(ClassLoader.getSystemResource("icons/logo.jpg"));
         Image i2=i1.getImage().getScaledInstance(100, 100, Image.SCALE_DEFAULT);
@@ -74,7 +74,7 @@ public class Login extends JFrame implements ActionListener{
     }
     
     public static void main(String[] args) {
-        new Login();
+        new Home();
     }
 
     @Override
@@ -83,7 +83,8 @@ public class Login extends JFrame implements ActionListener{
             
         }
         else if(e.getSource()==signup){
-            
+            setVisible(false);
+            new SignUp().setVisible(true);
         }
         else if(e.getSource()==clear){
             cardNum.setText("");
