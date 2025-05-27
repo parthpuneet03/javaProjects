@@ -42,7 +42,7 @@ public class SignUp extends JFrame implements ActionListener{
         name.setBounds(190,140,100,40);
         add(name);
         
-        nameField=new JTextField();
+        nameField=new JTextField("wdw");
         nameField.setFont(new Font("Arial", Font.BOLD, 18));
         nameField.setBounds(360, 150, 300, 20);
         add(nameField);
@@ -196,8 +196,8 @@ public class SignUp extends JFrame implements ActionListener{
             }else{
                 Conn c= new Conn();
                 String query="insert into bankmanagementsystem  values('"+formNo+"', '"+name+"', '"+fname+"', '"+dob+"', '"+gender+"', '"+email+"', '"+maritalStatus+"', '"+address+"', '"+city+"', '"+state+"', '"+pin+"');";
-                JOptionPane.showMessageDialog(null, query);
                 c.s.executeUpdate(query);
+                new CardDetails(formNo).setVisible(true);
             }
         }catch( Exception | Error er){
             er.printStackTrace();
