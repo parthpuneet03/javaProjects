@@ -22,7 +22,7 @@ public class CardDetails extends JFrame{
         add(bankDetails);
         
         Random rnd=new Random();
-        Long accNo=(Math.abs(rnd.nextLong()%900000000000000000L));
+        long accNo = 100000000000000000L + (long)(rnd.nextDouble() * 900000000000000000L);
         
         JLabel accNumLabel =new JLabel("Account Number:");
         accNumLabel.setFont(new Font("Raleway", Font.BOLD,18));
@@ -35,7 +35,8 @@ public class CardDetails extends JFrame{
         add(accNum);
         
         Random rnd1=new Random();
-        Long cardNo=(Math.abs(rnd1.nextLong()%9000000000000000L));
+        long cardNo = 1000000000000000L + (long)(rnd1.nextDouble() * 9000000000000000L);
+
         String cardNumber="";
         int i=0;
             while(true){
@@ -62,9 +63,9 @@ public class CardDetails extends JFrame{
         cardNum.setBounds(250,200,600,40);
         add(cardNum);
         
-        JLabel cardPin =new JLabel(""+cardNumber);
-        cardPin.setFont(new Font("Raleway", Font.BOLD,20));
-        cardPin.setBounds(250,250,600,40);
+        JLabel cardPin =new JLabel("Enter Card Pin: ");
+        cardPin.setFont(new Font("Raleway", Font.BOLD,18));
+        cardPin.setBounds(100,250,600,40);
         add(cardPin);
         
         
